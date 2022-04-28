@@ -389,8 +389,7 @@ Splash
 ===============
 */
 
-.splash-container,
-.splash {
+.splash-container {
   z-index: 550;
   background: #fff;
   width: 100vw;
@@ -401,11 +400,8 @@ Splash
   animation: fadeAway 400ms 4500ms forwards;
 }
 
+.home-page,
 .splash {
-  animation: fadeAway 400ms forwards;
-}
-
-.home-page {
   background: #fff;
 }
 
