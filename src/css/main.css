@@ -401,6 +401,10 @@ Splash
   animation: fadeAway 400ms 4500ms forwards;
 }
 
+.splash {
+  animation: fadeAway 400ms forwards;
+}
+
 .home-page {
   background: #fff;
 }
