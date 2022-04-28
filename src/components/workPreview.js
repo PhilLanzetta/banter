@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 import ReactPlayer from "react-player"
 import slugify from "slugify"
@@ -9,7 +9,7 @@ const WorkPreview = ({ data, featured, home }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [ready, setReady] = useState(false)
   const [error, setError] = useState(false)
-  const { id, title, videoId, loadingImage } = data
+  const { title, videoId, loadingImage } = data
   const slug = slugify(title, { lower: true, strict: true })
   const handleMouseEnter = () => {
     setIsPlaying(true)
@@ -33,12 +33,14 @@ const WorkPreview = ({ data, featured, home }) => {
         className={containerClass}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        role="presentation"
       >
         <div className="work-preview-media">
           <Link to={`/${slug}`} className="work-video-link"></Link>
           <GatsbyImage
             image={loadingImage.gatsbyImageData}
             className={`work-cover-img ${ready ? "work-cover-hide" : ""}`}
+            alt={loadingImage.description || loadingImage.title}
           />
           {error && (
             <div className="work-error-msg">

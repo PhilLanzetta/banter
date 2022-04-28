@@ -34,7 +34,7 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
     <header>
       <nav>
         <div className={`navbar ${visible ? "nav-show" : "nav-hide"}`}>
-          <Link to="/" onClick={isOpen ? toggleSidebar : ''}>
+          <Link to="/" onClick={isOpen ? toggleSidebar : () => {}}>
             <img className="nav-logo" src={logo} alt="banter logo" />
           </Link>
           <button

@@ -11,15 +11,15 @@ const SplashContainer = () => {
 
   if (typeof window !== "undefined" && window.sessionStorage) {
     return (
-      <>
+      <div>
         {typeof sessionStorage.getItem("welcomeShown") !== null &&
           sessionStorage.getItem("welcomeShown") !== "true" && (
             <Splash />
           )}
-      </>
+      </div>
     )
   } else {
-    return
+    return null
   }
 }
 

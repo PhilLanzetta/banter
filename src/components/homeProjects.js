@@ -6,10 +6,13 @@ const query = graphql`
   {
     contentfulHomePageProjects {
       projects {
+        id
         title
         videoId
         loadingImage {
           gatsbyImageData
+          title
+          description
           id
         }
       }

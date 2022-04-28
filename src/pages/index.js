@@ -14,7 +14,9 @@ import Press from "../components/press"
 const IndexPage = () => (
   <LayoutHome>
     <Seo title="Home" />
-    <SplashContainer />
+    <div className="splash">
+      <SplashContainer />
+    </div>
     <div className="home-page">
       <Hero />
       <MarqueeSlider />

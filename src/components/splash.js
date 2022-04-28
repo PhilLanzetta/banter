@@ -18,10 +18,12 @@ const Splash = () => {
 
   return (
     <div className="splash-container">
-      <div class="splash-overlay">
+      <div className="splash-overlay">
         <div className="splash-content">
-          <img class="splash-logo" src={logo} alt="banter logo" />
-          <p class="splash-tagline">Creative content worth talking about.</p>
+          <img className="splash-logo" src={logo} alt="banter logo" />
+          <p className="splash-tagline">
+            Creative content worth talking about.
+          </p>
         </div>
       </div>
     </div>

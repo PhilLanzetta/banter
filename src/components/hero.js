@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import ReactPlayer from "react-player/vimeo"
 
 const Hero = () => {
   const data = useStaticQuery(graphql`
@@ -11,15 +10,24 @@ const Hero = () => {
         verticalVideoId
         horizontalVideoPoster {
           gatsbyImageData
+          description
+          title
         }
         verticalVideoPoster {
           gatsbyImageData
+          description
+          title
         }
       }
     }
   `)
-  const [width, setWidth] = useState(window.innerWidth)
-  const [height, setHeight] = useState(window.innerHeight)
+  const [width, setWidth] = useState(0)
+  const [height, setHeight] = useState(0)
+
+  useEffect(() => {
+    setWidth(window.innerWidth)
+    setHeight(window.innerHeight)
+  }, [])
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -44,12 +52,16 @@ const Hero = () => {
       <GatsbyImage
         className="fallback-img"
         image={data.contentfulHeroVideo.verticalVideoPoster.gatsbyImageData}
+        alt={
+          data.contentfulHeroVideo.verticalVideoPoster.description ||
+          data.contentfulHeroVideo.verticalVideoPoster.title
+        }
       />
       <iframe
         style={
           height / width >= 1.77
-            ? { "min-height": "100%", "min-width": minVerticalWidth }
-            : { "min-height": minVerticalHeight, "min-width": "100%" }
+            ? { minHeight: "100%", minWidth: minVerticalWidth }
+            : { minHeight: minVerticalHeight, minWidth: "100%" }
         }
         src={`https://player.vimeo.com/video/${data.contentfulHeroVideo.verticalVideoId}?autoplay=1&muted=1&playsinline=1&controls=0&loop=1%autopause=0`}
         title="banter reel"
@@ -60,12 +72,16 @@ const Hero = () => {
       <GatsbyImage
         className="fallback-img"
         image={data.contentfulHeroVideo.horizontalVideoPoster.gatsbyImageData}
+        alt={
+          data.contentfulHeroVideo.horizontalVideoPoster.description ||
+          data.contentfulHeroVideo.horizontalVideoPoster.title
+        }
       />
       <iframe
         style={
           height / width >= 0.56
-            ? { "min-height": "100%", "min-width": minHorizontalWidth }
-            : { "min-height": minHorizontalHeight, "min-width": "100%" }
+            ? { minHeight: "100%", minWidth: minHorizontalWidth }
+            : { minHeight: minHorizontalHeight, minWidth: "100%" }
         }
         src={`https://player.vimeo.com/video/${data.contentfulHeroVideo.horizontalVideoId}?autoplay=1&muted=1&playsinline=1&controls=0&loop=1&autopause=0`}
         title="banter reel"
