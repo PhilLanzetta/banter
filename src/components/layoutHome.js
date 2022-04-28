@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Header from "./header"
+import HeaderHome from "./headerHome"
 import Footer from "./footer"
 import "../css/main.css"
 
@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
   }
   return (
     <>
-      <Header toggleSidebar={toggleSidebar} isOpen={isOpen} />
+      <HeaderHome toggleSidebar={toggleSidebar} isOpen={isOpen} />
       {children}
       <Footer />
     </>

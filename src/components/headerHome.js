@@ -3,17 +3,24 @@ import { Link } from "gatsby"
 import { debounce } from "../utilities/helpers"
 import logo from "../assets/images/logo2.svg"
 
-const Header = ({ toggleSidebar, isOpen }) => {
+const HeaderHome = ({ toggleSidebar, isOpen }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
 
   const handleScroll = debounce(() => {
     const currentScrollPos = window.pageYOffset
 
-    setVisible(
-      prevScrollPos > currentScrollPos || currentScrollPos < 60 || isOpen
-    )
-
+    if (currentScrollPos === 0) {
+      setVisible(false)
+    } else if (
+      prevScrollPos > currentScrollPos ||
+      (currentScrollPos > 40 && currentScrollPos < 200) ||
+      isOpen
+    ) {
+      setVisible(true)
+    } else {
+      setVisible(false)
+    }
     setPrevScrollPos(currentScrollPos)
   }, 0)
 
@@ -27,7 +34,7 @@ const Header = ({ toggleSidebar, isOpen }) => {
     <header>
       <nav>
         <div className={`navbar ${visible ? "nav-show" : "nav-hide"}`}>
-          <Link to="/">
+          <Link to="/" onClick={isOpen ? toggleSidebar : ''}>
             <img className="nav-logo" src={logo} alt="banter logo" />
           </Link>
           <button
@@ -92,4 +99,4 @@ const Header = ({ toggleSidebar, isOpen }) => {
   )
 }
 
-export default Header
+export default HeaderHome
