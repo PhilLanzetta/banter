@@ -48,7 +48,7 @@ const Hero = () => {
   const minVerticalWidth = (height * 16) / 9
 
   return width < height ? (
-    <div className="hero-container">
+    <div className="hero-container" style={{ height: height, width: width }}>
       <GatsbyImage
         className="fallback-img"
         image={data.contentfulHeroVideo.verticalVideoPoster.gatsbyImageData}
