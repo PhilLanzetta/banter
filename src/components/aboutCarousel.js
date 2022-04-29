@@ -19,12 +19,7 @@ const AboutCarousel = () => {
 
   return (
     <div className="about-carousel">
-      <Marquee
-        pauseOnHover
-        gradient={false}
-        className="about-marquee"
-        speed={30}
-      >
+      <Marquee gradient={false} className="about-marquee" speed={30}>
         {data.contentfulAbout.photoCarousel.map(image => (
           <GatsbyImage
             key={image.id}

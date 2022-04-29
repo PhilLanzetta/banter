@@ -10,7 +10,7 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
   const handleScroll = debounce(() => {
     const currentScrollPos = window.pageYOffset
 
-    if (currentScrollPos === 0) {
+    if (currentScrollPos === 0 && !isOpen) {
       setVisible(false)
     } else if (
       prevScrollPos > currentScrollPos ||
