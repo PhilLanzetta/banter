@@ -289,10 +289,11 @@ footer {
 .footer-container {
   width: 80%;
   min-height: 100vh;
-  padding-top: 60px;
+  padding-top: 30vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-bottom: 5vh;
 }
 
 .footer-logo {
@@ -357,6 +358,10 @@ footer {
 }
 
 @media screen and (min-width: 769px) {
+  .footer-container {
+    padding-top: 20vh;
+  }
+
   .footer-tagline {
     font-size: 35px;
     margin: 25px auto;
@@ -368,8 +373,8 @@ footer {
 
   .footer-mailing-container {
     display: flex;
-    width: 110%;
-    margin-left: -5%;
+    width: 115%;
+    margin-left: -7.5%;
     justify-content: space-between;
   }
 
@@ -427,7 +432,7 @@ Splash
 
 .splash-logo {
   opacity: 0;
-  width: 250px;
+  width: 180px;
   animation: banterAnimateMobile 4500ms ease-out 400ms forwards;
 }
 
@@ -455,10 +460,10 @@ Splash
     opacity: 1;
   }
   30% {
-    transform: translateX(-250px);
+    transform: translateX(-240px);
   }
   70% {
-    transform: translateX(-250px);
+    transform: translateX(-240px);
   }
 
   80% {
@@ -522,12 +527,12 @@ Splash
 @media screen and (min-width: 769px) {
   .splash-logo {
     opacity: 0;
-    width: 20%;
+    width: 180px;
     animation: banterAnimate 4500ms ease-in-out 400ms forwards;
   }
   .splash-tagline {
-    transform: translateX(125px);
-    font-size: 24px;
+    transform: translate(150px, 10px);
+    font-size: 32px;
   }
 }
 
@@ -761,6 +766,7 @@ Home
   min-width: 100%;
   min-height: 100%;
   transform: translate(-50%, -50%);
+  border: none;
 }
 
 .works-list {

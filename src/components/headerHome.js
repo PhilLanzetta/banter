@@ -49,17 +49,17 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
           </button>
           <ul className="desktop-page-links">
             <li>
-              <Link to="/projects" className="hover-underline-animation">
+              <Link to="/projects" className="hover-underline-animation-full black">
                 Case Studies
               </Link>
             </li>
             <li>
-              <Link className="hover-underline-animation" to="/work">
+              <Link className="hover-underline-animation-full black" to="/work">
                 Work
               </Link>
             </li>
             <li>
-              <Link className="hover-underline-animation" to="/about">
+              <Link className="hover-underline-animation-full black" to="/about">
                 About
               </Link>
             </li>
@@ -68,7 +68,7 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
         <ul className={`mobile-page-links ${isOpen ? "show" : "hide"}`}>
           <li>
             <Link
-              className="hover-underline-animation"
+              className="hover-underline-animation-full black"
               to="/projects"
               onClick={toggleSidebar}
             >
@@ -77,7 +77,7 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
           </li>
           <li>
             <Link
-              className="hover-underline-animation"
+              className="hover-underline-animation-full black"
               to="/work"
               onClick={toggleSidebar}
             >
@@ -86,7 +86,7 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
           </li>
           <li>
             <Link
-              className="hover-underline-animation"
+              className="hover-underline-animation-full black"
               to="/about"
               onClick={toggleSidebar}
             >
