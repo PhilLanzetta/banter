@@ -10,7 +10,7 @@ const query = graphql`
         title
         videoId
         loadingImage {
-          gatsbyImageData
+          gatsbyImageData(placeholder: BLURRED)
           title
           description
           id

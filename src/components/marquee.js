@@ -11,7 +11,7 @@ const MarqueeSlider = () => {
     }
   `)
   return (
-    <Marquee className="marquee" gradient={false} speed={80}>
+    <Marquee className="word-marquee" gradient={false} speed={80}>
       {[...Array(20)].map((e, i) => (
         <div className="marquee-items" key={i}>
           {data.contentfulMarquee.marqueeItems.map((item, index) => (

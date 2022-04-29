@@ -17,7 +17,7 @@ const Team = () => {
             name
             position
             profilePic {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED)
             }
             id
           }

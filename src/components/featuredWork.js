@@ -13,7 +13,7 @@ const query = graphql`
         id
         title
         loadingImage {
-          gatsbyImageData
+          gatsbyImageData(placeholder: BLURRED)
         }
       }
     }

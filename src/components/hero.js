@@ -9,12 +9,12 @@ const Hero = () => {
         horizontalVideoId
         verticalVideoId
         horizontalVideoPoster {
-          gatsbyImageData
+          gatsbyImageData(placeholder: BLURRED)
           description
           title
         }
         verticalVideoPoster {
-          gatsbyImageData
+          gatsbyImageData(placeholder: BLURRED)
           description
           title
         }

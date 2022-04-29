@@ -12,7 +12,7 @@ const query = graphql`
         title
         link
         image {
-          gatsbyImageData
+          gatsbyImageData(placeholder: BLURRED)
           description
           title
         }
