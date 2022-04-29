@@ -564,6 +564,7 @@ About
 
 .about-carousel {
   position: relative;
+  height: 350px;
 }
 
 .image-prev,

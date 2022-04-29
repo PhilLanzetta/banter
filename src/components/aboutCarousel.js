@@ -98,6 +98,8 @@ const AboutCarousel = () => {
         photoCarousel {
           gatsbyImageData
           id
+          title
+          description
         }
       }
     }
@@ -115,7 +117,10 @@ const AboutCarousel = () => {
       <Slider {...settings}>
         {data.contentfulAbout.photoCarousel.map(image => (
           <div className="about-image-slide" key={image.id}>
-            <GatsbyImage image={image.gatsbyImageData} />
+            <GatsbyImage
+              image={image.gatsbyImageData}
+              alt={image.description || image.title}
+            />
           </div>
         ))}
       </Slider>

@@ -23,16 +23,17 @@ const Hero = () => {
   `)
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
+  const [videoPlay, setVideoPlay] = useState(false)
 
   useEffect(() => {
-    setWidth(window.innerWidth)
-    setHeight(window.innerHeight)
+    setWidth(window.outerWidth)
+    setHeight(window.outerHeight)
   }, [])
 
   useEffect(() => {
     const handleWindowResize = () => {
-      setWidth(window.innerWidth)
-      setHeight(window.innerHeight)
+      setWidth(window.outerWidth)
+      setHeight(window.outerHeight)
     }
     window.addEventListener("resize", handleWindowResize)
 
@@ -49,15 +50,18 @@ const Hero = () => {
 
   return width < height ? (
     <div className="hero-container" style={{ height: height, width: width }}>
-      <GatsbyImage
-        className="fallback-img"
-        image={data.contentfulHeroVideo.verticalVideoPoster.gatsbyImageData}
-        alt={
-          data.contentfulHeroVideo.verticalVideoPoster.description ||
-          data.contentfulHeroVideo.verticalVideoPoster.title
-        }
-      />
+      {!videoPlay && (
+        <GatsbyImage
+          className="fallback-img"
+          image={data.contentfulHeroVideo.verticalVideoPoster.gatsbyImageData}
+          alt={
+            data.contentfulHeroVideo.verticalVideoPoster.description ||
+            data.contentfulHeroVideo.verticalVideoPoster.title
+          }
+        />
+      )}
       <iframe
+        onPlay={() => setVideoPlay(true)}
         style={
           height / width >= 1.77
             ? { minHeight: "100%", minWidth: minVerticalWidth }
@@ -68,16 +72,19 @@ const Hero = () => {
       />
     </div>
   ) : (
-    <div className="hero-container">
-      <GatsbyImage
-        className="fallback-img"
-        image={data.contentfulHeroVideo.horizontalVideoPoster.gatsbyImageData}
-        alt={
-          data.contentfulHeroVideo.horizontalVideoPoster.description ||
-          data.contentfulHeroVideo.horizontalVideoPoster.title
-        }
-      />
+    <div className="hero-container" style={{ height: height, width: width }}>
+      {!videoPlay && (
+        <GatsbyImage
+          className="fallback-img"
+          image={data.contentfulHeroVideo.horizontalVideoPoster.gatsbyImageData}
+          alt={
+            data.contentfulHeroVideo.horizontalVideoPoster.description ||
+            data.contentfulHeroVideo.horizontalVideoPoster.title
+          }
+        />
+      )}
       <iframe
+        onPlay={() => setVideoPlay(true)}
         style={
           height / width >= 0.56
             ? { minHeight: "100%", minWidth: minHorizontalWidth }
