@@ -143,7 +143,7 @@ const Press = () => {
               />
               <h3>
                 <a href={item.link} rel="noreferrer" target="_blank">
-                  {item.title}&#8599;
+                  {item.title} ↗&#xFE0E;
                 </a>
               </h3>
               <p>{item.description}</p>

@@ -2,8 +2,6 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { useStaticQuery, graphql } from "gatsby"
 import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
 
 function SampleNextArrow(props) {
   const { onClick } = props
@@ -118,6 +116,7 @@ const AboutCarousel = () => {
         {data.contentfulAbout.photoCarousel.map(image => (
           <div className="about-image-slide" key={image.id}>
             <GatsbyImage
+              className="about-image"
               image={image.gatsbyImageData}
               alt={image.description || image.title}
             />

@@ -183,7 +183,7 @@ Header
 
 .mobile-page-links {
   background-color: #fff;
-  z-index: 99;
+  z-index: 110;
   min-height: calc(100vh - 60px);
   position: fixed;
   top: 60px;
@@ -558,13 +558,18 @@ About
   animation: fadeIn 700ms 400ms;
 }
 
-.about-image-slide img {
+.about-image-slide {
   height: 350px;
+}
+
+.about-image img {
+  height: 350px !important;
 }
 
 .about-carousel {
   position: relative;
   height: 350px;
+  overflow: hidden;
 }
 
 .image-prev,
@@ -794,10 +799,6 @@ Home
   margin-bottom: 3rem;
 }
 
-.home-preview {
-  margin-bottom: 0;
-}
-
 .work-preview-media {
   position: relative;
 }
@@ -893,6 +894,10 @@ Home
   .work-preview,
   .home-preview {
     width: 48%;
+  }
+
+  .home-preview {
+    margin-bottom: 0;
   }
 }
 
