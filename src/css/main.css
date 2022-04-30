@@ -915,3 +915,45 @@ Home
     width: 48%;
   }
 }
+
+.case-page {
+  padding-top: 60px;
+  font-family: "founders", sans-serif;
+}
+
+.case-heading {
+  background: #c7c7c7;
+  width: 100%;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.case-heading h1 {
+  text-transform: uppercase;
+  font-weight: normal;
+  display: block;
+  font-size: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.case-heading h2 {
+  font-weight: normal;
+}
+
+@media screen and (min-width: 769px) {
+  .case-heading {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .case-heading h1 {
+    width: 30%;
+    padding-bottom: 0;
+  }
+
+  .case-heading h2 {
+    width: 50%;
+  }
+}
