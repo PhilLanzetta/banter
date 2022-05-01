@@ -942,6 +942,96 @@ Home
   font-weight: normal;
 }
 
+.case-study-body {
+  margin: 4rem 2rem;
+}
+
+.case-header-video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+.video-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.vertical-video {
+  aspect-ratio: 9/16;
+  width: clamp(200px, 100%, 500px);
+}
+
+.media-video-module {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.cover-image-for-video {
+  position: absolute;
+}
+
+.case-body-text {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.case-crew-cast {
+  text-align: center;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+}
+
+.case-crew-cast h3 {
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.case-crew-cast p {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.case-crew-cast p:last-of-type {
+  margin-right: 0;
+}
+
+.case-crew-cast p::after {
+  content: "/";
+  margin-left: 5px;
+}
+
+.case-crew-cast p:last-of-type::after {
+  content: "";
+}
+
+.two-column-image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.two-column-image,
+.single-column-image {
+  margin: 2rem 0;
+}
+
+.related {
+  font-family: "founders", sans-serif;
+  padding: 4rem 2rem;
+}
+
+.related h3 {
+  font-size: 2.5rem;
+  font-weight: normal;
+}
+
 @media screen and (min-width: 769px) {
   .case-heading {
     flex-direction: row;
@@ -955,5 +1045,22 @@ Home
 
   .case-heading h2 {
     width: 50%;
+  }
+
+  .two-column-image {
+    width: 48%;
+  }
+
+  .case-study-body {
+    width: 80%;
+    margin: 4rem auto;
+  }
+
+  .case-crew-cast h3 {
+    font-size: 1.75rem;
+  }
+
+  .case-crew-cast p {
+    font-size: 1.25rem;
   }
 }
