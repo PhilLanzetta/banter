@@ -19,7 +19,6 @@ const CaseStudyPage = ({ data }) => {
 
   const { nodes: posts } = data.relatedPosts
 
-  console.log(data)
   return (
     <Layout>
       <div className="case-page">
@@ -29,7 +28,11 @@ const CaseStudyPage = ({ data }) => {
         </div>
         <div className="case-study-body">
           <div className="case-header-video">
-            <VideoWithCover coverImage={loadingImage} videoId={videoId} />
+            <VideoWithCover
+              coverImage={loadingImage}
+              videoId={videoId}
+              title={title}
+            />
           </div>
           {bodyText && <p className="case-body-text">{bodyText.bodyText}</p>}
           {mediaSection && (
@@ -64,6 +67,7 @@ const CaseStudyPage = ({ data }) => {
                         coverImage={item.coverPhoto}
                         videoId={item.videoId}
                         vertical={item.vertical}
+                        title={item.title}
                       />
                     </div>
                   )
@@ -74,20 +78,38 @@ const CaseStudyPage = ({ data }) => {
           <div className="case-crew-cast">
             <h3>Crew</h3>
             {crew &&
-              crew.map((item, index) => (
-                <p key={index} className="cast-crew-member">
-                  {item}{" "}
-                </p>
-              ))}
+              crew.map((item, index) =>
+                item.link ? (
+                  <a
+                    key={index}
+                    href={item.link}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {item.nameAndTitle}
+                  </a>
+                ) : (
+                  <p>{item.nameAndTitle}</p>
+                )
+              )}
           </div>
           <div className="case-crew-cast">
             <h3>Cast</h3>
             {cast &&
-              cast.map((item, index) => (
-                <p key={index} className="cast-crew-member">
-                  {item}{" "}
-                </p>
-              ))}
+              cast.map((item, index) =>
+                item.link ? (
+                  <a
+                    key={index}
+                    href={item.link}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {item.nameAndTitle}
+                  </a>
+                ) : (
+                  <p>{item.nameAndTitle}</p>
+                )
+              )}
           </div>
         </div>
       </div>
@@ -99,8 +121,6 @@ const CaseStudyPage = ({ data }) => {
 export const query = graphql`
   query getSingleCasStudy($title: String, $tags: [String]) {
     contentfulCaseStudy(title: { eq: $title }) {
-      cast
-      crew
       id
       title
       videoId
@@ -115,6 +135,18 @@ export const query = graphql`
       }
       bodyText {
         bodyText
+      }
+      cast {
+        ... on ContentfulCastCrewMember {
+          nameAndTitle
+          link
+        }
+      }
+      crew {
+        ... on ContentfulCastCrewMember {
+          nameAndTitle
+          link
+        }
       }
       mediaSection {
         ... on ContentfulSingleColumnImage {
@@ -137,6 +169,7 @@ export const query = graphql`
           id
           videoId
           vertical
+          title
           coverPhoto {
             gatsbyImageData(placeholder: BLURRED)
             title

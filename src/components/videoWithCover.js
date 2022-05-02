@@ -2,10 +2,10 @@ import React, { useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import ReactPlayer from "react-player"
 
-const VideoWithCover = ({ coverImage, videoId, vertical }) => {
+const VideoWithCover = ({ coverImage, videoId, vertical, title }) => {
   const [playerReady, setPlayerReady] = useState(false)
   return (
-    <div className={`video-container ${vertical ? "vertical-video" : ""}`}>
+    <figure className={`video-container ${vertical ? "vertical-video" : ""}`}>
       {!playerReady && (
         <GatsbyImage
           image={coverImage.gatsbyImageData}
@@ -20,7 +20,8 @@ const VideoWithCover = ({ coverImage, videoId, vertical }) => {
         width={"100%"}
         height={"100%"}
       />
-    </div>
+      <figcaption>{title}</figcaption>
+    </figure>
   )
 }
 
