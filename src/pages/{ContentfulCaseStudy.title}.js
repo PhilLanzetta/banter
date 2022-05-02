@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
 import VideoWithCover from "../components/videoWithCover"
 import RelatedPosts from "../components/relatedPosts"
+import Seo from "../components/seo"
 
 const CaseStudyPage = ({ data }) => {
   const {
@@ -21,6 +22,7 @@ const CaseStudyPage = ({ data }) => {
 
   return (
     <Layout>
+      <Seo title={title} />
       <div className="case-page">
         <div className="case-heading">
           <h1>{title}</h1>
