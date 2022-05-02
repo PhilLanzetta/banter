@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
 import VideoWithCover from "../components/videoWithCover"
+import RelatedPosts from "../components/relatedPosts"
 
 const CaseStudyPage = ({ data }) => {
   const {
@@ -15,6 +16,8 @@ const CaseStudyPage = ({ data }) => {
     bodyText,
     mediaSection,
   } = data.contentfulCaseStudy
+
+  const { nodes: posts } = data.relatedPosts
 
   console.log(data)
   return (
@@ -88,21 +91,20 @@ const CaseStudyPage = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="related">
-        <h3>Related Projects</h3>
-      </div>
+      <RelatedPosts posts={posts} />
     </Layout>
   )
 }
 
 export const query = graphql`
-  query getSingleCasStudy($title: String) {
+  query getSingleCasStudy($title: String, $tags: [String]) {
     contentfulCaseStudy(title: { eq: $title }) {
       cast
       crew
       id
       title
       videoId
+      tags
       loadingImage {
         gatsbyImageData(placeholder: BLURRED)
         title
@@ -141,6 +143,23 @@ export const query = graphql`
             description
           }
         }
+      }
+    }
+    relatedPosts: allContentfulCaseStudy(
+      limit: 2
+      filter: { tags: { in: $tags }, title: { ne: $title } }
+    ) {
+      nodes {
+        id
+        headlineDescription {
+          headlineDescription
+        }
+        loadingImage {
+          gatsbyImageData(placeholder: BLURRED)
+          description
+          title
+        }
+        title
       }
     }
   }
