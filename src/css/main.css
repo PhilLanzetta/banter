@@ -1004,21 +1004,23 @@ Home
   margin-bottom: 2rem;
 }
 
-.case-crew-cast p, .case-crew-cast a {
+.case-crew-cast p,
+.case-crew-cast a {
   display: inline;
   margin-right: 5px;
 }
 
-.case-crew-cast p:last-of-type, .case-crew-cast a:last-of-type {
+.case-crew-cast :last-child {
   margin-right: 0;
 }
 
-.case-crew-cast p::after, .case-crew-cast a::after {
+.case-crew-cast p::after,
+.case-crew-cast a::after {
   content: "/";
   margin-left: 5px;
 }
 
-.case-crew-cast p:last-of-type::after, .case-crew-cast a:last-of-type::after {
+.case-crew-cast :last-child::after {
   content: "";
 }
 
@@ -1094,7 +1096,8 @@ Home
     font-size: 1.75rem;
   }
 
-  .case-crew-cast p, .case-crew-cast a {
+  .case-crew-cast p,
+  .case-crew-cast a {
     font-size: 1.25rem;
   }
 }
