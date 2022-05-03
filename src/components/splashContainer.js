@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import Splash from "./splash"
 
 const SplashContainer = () => {
@@ -13,9 +13,7 @@ const SplashContainer = () => {
     return (
       <div>
         {typeof sessionStorage.getItem("welcomeShown") !== null &&
-          sessionStorage.getItem("welcomeShown") !== "true" && (
-            <Splash />
-          )}
+          sessionStorage.getItem("welcomeShown") !== "true" && <Splash />}
       </div>
     )
   } else {

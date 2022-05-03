@@ -4,8 +4,11 @@ import ReactPlayer from "react-player"
 
 const VideoWithCover = ({ coverImage, videoId, vertical, title }) => {
   const [playerReady, setPlayerReady] = useState(false)
+
   return (
-    <figure className={`video-container ${vertical ? "vertical-video" : ""}`}>
+    <figure
+      className={`video-container ${vertical ? 'vertical-video' : ''}`}
+    >
       {!playerReady && (
         <GatsbyImage
           image={coverImage.gatsbyImageData}

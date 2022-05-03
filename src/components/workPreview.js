@@ -10,7 +10,8 @@ const WorkPreview = ({ data, featured, home }) => {
   const [ready, setReady] = useState(false)
   const [error, setError] = useState(false)
   const { title, videoId, loadingImage } = data
-  const slug = slugify(title, { lower: true, strict: true })
+  slugify.extend({ "'": "-" })
+  const slug = slugify(title, { lower: true, remove: /[*+~.()"!:@]/g })
   const handleMouseEnter = () => {
     setIsPlaying(true)
   }
@@ -28,7 +29,7 @@ const WorkPreview = ({ data, featured, home }) => {
   }
 
   return (
-    <Fade bottom>
+    <Fade>
       <div
         className={containerClass}
         onMouseEnter={handleMouseEnter}

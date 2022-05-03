@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
 import VideoWithCover from "../components/videoWithCover"
-import RelatedPosts from "../components/relatedPosts"
+import WorkPreview from "../components/workPreview"
 import Seo from "../components/seo"
 
 const CaseStudyPage = ({ data }) => {
@@ -16,9 +16,8 @@ const CaseStudyPage = ({ data }) => {
     headlineDescription: { headlineDescription },
     bodyText,
     mediaSection,
+    related,
   } = data.contentfulCaseStudy
-
-  const { nodes: posts } = data.relatedPosts
 
   return (
     <Layout>
@@ -115,13 +114,20 @@ const CaseStudyPage = ({ data }) => {
           </div>
         </div>
       </div>
-      <RelatedPosts posts={posts} />
+      <div className="related">
+        <h3>Related Projects</h3>
+        <div className="post-container">
+          {related.map(post => (
+            <WorkPreview data={post} key={post.id} featured />
+          ))}
+        </div>
+      </div>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query getSingleCasStudy($title: String, $tags: [String]) {
+  query getSingleCasStudy($title: String) {
     contentfulCaseStudy(title: { eq: $title }) {
       id
       title
@@ -179,22 +185,15 @@ export const query = graphql`
           }
         }
       }
-    }
-    relatedPosts: allContentfulCaseStudy(
-      limit: 2
-      filter: { tags: { in: $tags }, title: { ne: $title } }
-    ) {
-      nodes {
+      related {
         id
-        headlineDescription {
-          headlineDescription
-        }
+        title
+        videoId
         loadingImage {
           gatsbyImageData(placeholder: BLURRED)
-          description
           title
+          description
         }
-        title
       }
     }
   }
