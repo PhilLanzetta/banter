@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import TransitionLink from "gatsby-plugin-transition-link"
 import ReactPlayer from "react-player"
 import slugify from "slugify"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -36,7 +36,14 @@ const WorkPreview = ({ data, featured, home }) => {
       role="presentation"
     >
       <div className="work-preview-media">
-        <AniLink fade to={`/${slug}`} className="work-video-link"></AniLink>
+        <TransitionLink
+          exit={{
+            length: 1,
+          }}
+          entry={{ length: 1 }}
+          to={`/${slug}`}
+          className="work-video-link"
+        ></TransitionLink>
         <GatsbyImage
           image={loadingImage.gatsbyImageData}
           className={`work-cover-img ${ready ? "work-cover-hide" : ""}`}
@@ -61,22 +68,28 @@ const WorkPreview = ({ data, featured, home }) => {
         />
       </div>
       <div className="work-video-info">
-        <AniLink
-          fade
+        <TransitionLink
+          exit={{
+            length: 1,
+          }}
+          entry={{ length: 1 }}
           to={`/${slug}`}
           className={`title-link ${featured ? "featured-title-link" : ""}`}
         >
           {title}
-        </AniLink>
-        <AniLink
-          fade
+        </TransitionLink>
+        <TransitionLink
+          exit={{
+            length: 1,
+          }}
+          entry={{ length: 1 }}
           to={`/${slug}`}
           className={`work-view-link hover-underline-animation-full black ${
             featured ? "featured-view-link" : ""
           }`}
         >
           VIEW PROJECT →
-        </AniLink>
+        </TransitionLink>
       </div>
     </FadeIn>
   )

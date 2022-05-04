@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql} from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import WorkPreview from "./workPreview"
 
 const query = graphql`
@@ -10,7 +10,9 @@ const query = graphql`
         title
         id
         loadingImage {
-          gatsbyImageData
+          gatsbyImageData(placeholder: BLURRED)
+          title
+          description
         }
       }
     }

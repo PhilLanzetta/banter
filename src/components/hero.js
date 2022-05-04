@@ -21,8 +21,8 @@ const Hero = () => {
       }
     }
   `)
-  const [width, setWidth] = useState('100vw')
-  const [height, setHeight] = useState('100vh')
+  const [width, setWidth] = useState(0)
+  const [height, setHeight] = useState(0)
   const [videoPlay, setVideoPlay] = useState(false)
 
   useEffect(() => {
@@ -64,8 +64,8 @@ const Hero = () => {
         onPlay={() => setVideoPlay(true)}
         style={
           height / width >= 1.77
-            ? { minHeight: "100%", minWidth: minVerticalWidth }
-            : { minHeight: minVerticalHeight, minWidth: "100%" }
+            ? { minHeight: height, minWidth: minVerticalWidth }
+            : { minHeight: minVerticalHeight, minWidth: width }
         }
         src={`https://player.vimeo.com/video/${data.contentfulHeroVideo.verticalVideoId}?autoplay=1&muted=1&playsinline=1&controls=0&loop=1%autopause=0`}
         title="banter reel"
@@ -87,8 +87,8 @@ const Hero = () => {
         onPlay={() => setVideoPlay(true)}
         style={
           height / width >= 0.56
-            ? { minHeight: "100%", minWidth: minHorizontalWidth }
-            : { minHeight: minHorizontalHeight, minWidth: "100%" }
+            ? { minHeight: height, minWidth: minHorizontalWidth }
+            : { minHeight: minHorizontalHeight, minWidth: width }
         }
         src={`https://player.vimeo.com/video/${data.contentfulHeroVideo.horizontalVideoId}?autoplay=1&muted=1&playsinline=1&controls=0&loop=1&autopause=0`}
         title="banter reel"

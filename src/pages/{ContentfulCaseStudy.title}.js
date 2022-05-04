@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import gsap from "gsap"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -7,7 +8,26 @@ import WorkPreview from "../components/workPreview"
 import FadeIn from "../components/fadeIn"
 import Seo from "../components/seo"
 
-const CaseStudyPage = ({ data }) => {
+const CaseStudyPage = ({ data, transitionStatus }) => {
+  useEffect(() => {
+    gsap.to(".case-page", {
+      autoAlpha: 1,
+      duration: 1,
+    })
+  }, []) //THIS IS RUN THE FIRST TIME THE SITE IS OPENED
+
+  useEffect(() => {
+    if (transitionStatus === "entering") {
+      gsap.to(".case-page", {
+        autoAlpha: 1,
+        duration: 1, //if we are entering the page, let's make the div with class .hometex visible in one second
+      })
+    }
+    if (transitionStatus === "exiting") {
+      gsap.to(".case-page", { autoAlpha: 0, duration: 1 }) //if we are exiting  the page, let's make the div with class .hometex transparent in one second
+    }
+  }, [transitionStatus])
+
   const {
     cast,
     crew,

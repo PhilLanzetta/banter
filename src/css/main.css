@@ -420,6 +420,10 @@ Splash
   background: #fff;
 }
 
+.home-page {
+  opacity: 0;
+}
+
 .splash-overlay {
   position: fixed;
   background-color: #000;
@@ -784,7 +788,9 @@ Home
   border: none;
 }
 
-.works-list {
+.works-list,
+.featured-works-list {
+  opacity: 0;
   margin-top: 60px;
   padding: 4rem 2rem;
   display: flex;
@@ -935,6 +941,7 @@ Home
 }
 
 .case-page {
+  opacity: 0;
   padding-top: 60px;
   font-family: "founders", sans-serif;
 }
@@ -969,6 +976,7 @@ Home
 }
 
 .video-container {
+  aspect-ratio: 16/9;
   height: calc(((100vw - 4rem) * 9) / 16);
   width: 100%;
   position: relative;
@@ -1124,7 +1132,7 @@ Home
   opacity: 0;
   transform: translate(0, 30px);
   transition: opacity 700ms ease-out, transform 300ms ease-out;
-  will-change: opacity, visibility;
+  will-change: opacity, transform;
 }
 
 .is-visible {

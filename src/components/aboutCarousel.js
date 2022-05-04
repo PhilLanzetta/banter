@@ -28,7 +28,7 @@ function SampleNextArrow(props) {
             transform="translate(1642.5 5564.5)"
             fill="none"
             stroke="#fff"
-            stroke-width="4"
+            strokeWidth="4"
           />
           <line
             id="Line_94"
@@ -38,7 +38,7 @@ function SampleNextArrow(props) {
             transform="translate(1642.5 5599.663)"
             fill="none"
             stroke="#fff"
-            stroke-width="4"
+            strokeWidth="4"
           />
         </g>
       </svg>
@@ -71,7 +71,7 @@ function SamplePrevArrow(props) {
             transform="translate(0)"
             fill="none"
             stroke="#fff"
-            stroke-width="4"
+            strokeWidth="4"
           />
           <line
             id="Line_94"
@@ -81,7 +81,7 @@ function SamplePrevArrow(props) {
             transform="translate(0 35.163)"
             fill="none"
             stroke="#fff"
-            stroke-width="4"
+            strokeWidth="4"
           />
         </g>
       </svg>

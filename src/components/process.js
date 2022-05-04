@@ -15,7 +15,6 @@ const Process = () => {
 
   const { processes } = JSON.parse(data.processContent.internal.content)
 
-  console.log(processes)
   return (
     <div className="process">
       {processes.map(item => (

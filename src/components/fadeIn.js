@@ -12,7 +12,6 @@ const FadeIn = ({ children, additionalClass }) => {
       if (entries[0].isIntersecting) {
         // Not possible to set it back to false like this:
         setVisible(true)
-        console.log(domRef.current)
         // No need to keep observing:
         observer.unobserve(domRef.current)
       }
@@ -24,7 +23,7 @@ const FadeIn = ({ children, additionalClass }) => {
     }
 
     return () => {
-       observer.unobserve(observerRefValue)
+      observer.unobserve(observerRefValue)
     }
   }, [])
 
@@ -32,7 +31,7 @@ const FadeIn = ({ children, additionalClass }) => {
     <div
       ref={domRef}
       className={`fade-container ${additionalClass} ${
-        isVisible ? " is-visible" : ""
+        isVisible ? "is-visible" : ""
       }`}
     >
       {children}

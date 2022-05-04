@@ -14,6 +14,8 @@ const query = graphql`
         title
         loadingImage {
           gatsbyImageData(placeholder: BLURRED)
+          title
+          description
         }
       }
     }
@@ -24,7 +26,7 @@ const FeaturedWork = () => {
   const data = useStaticQuery(query)
   const works = data.allContentfulCaseStudy.nodes
   return (
-    <div className="works-list">
+    <div className="featured-works-list">
       {works.map(work => (
         <WorkPreview data={work} key={work.id} featured />
       ))}
