@@ -1123,7 +1123,6 @@ Home
 .fade-container {
   opacity: 0;
   transform: translate(0, 30px);
-  visibility: hidden;
   transition: opacity 700ms ease-out, transform 300ms ease-out;
   will-change: opacity, visibility;
 }
@@ -1131,5 +1130,4 @@ Home
 .is-visible {
   opacity: 1;
   transform: none;
-  visibility: visible;
 }
