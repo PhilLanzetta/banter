@@ -470,10 +470,10 @@ Splash
     opacity: 1;
   }
   30% {
-    transform: translateX(-240px);
+    transform: translateX(-280px);
   }
   70% {
-    transform: translateX(-240px);
+    transform: translateX(-280px);
   }
 
   80% {
@@ -541,7 +541,7 @@ Splash
     animation: banterAnimate 4500ms ease-in-out 400ms forwards;
   }
   .splash-tagline {
-    transform: translate(150px, 10px);
+    transform: translate(100px, 10px);
     font-size: 32px;
   }
 }
@@ -965,16 +965,11 @@ Home
 }
 
 .case-header-video {
-  width: 100%;
-  aspect-ratio: 16/9;
-  min-height: 200px;
   margin-bottom: 4rem;
 }
 
 .video-container {
-  aspect-ratio: 16/9;
-  min-height: 200px;
-  height: 100%;
+  height: calc(((100vw - 4rem) * 9) / 16);
   width: 100%;
   position: relative;
 }
@@ -1114,8 +1109,27 @@ Home
     font-size: 1.25rem;
   }
 
+  .video-container {
+    height: 45vw;
+    width: 100%;
+  }
+
   .vertical-video {
     height: 600px;
     width: 480px;
   }
+}
+
+.fade-container {
+  opacity: 0;
+  transform: translate(0, 30px);
+  visibility: hidden;
+  transition: opacity 700ms ease-out, transform 300ms ease-out;
+  will-change: opacity, visibility;
+}
+
+.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
 }

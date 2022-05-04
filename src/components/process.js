@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import Fade from 'react-reveal/Fade'
+import FadeIn from "./fadeIn"
 
 const Process = () => {
   const data = useStaticQuery(graphql`
@@ -19,14 +19,12 @@ const Process = () => {
   return (
     <div className="process">
       {processes.map(item => (
-        <Fade bottom>
-          <div key={item.title} className="process-item">
-            <div className="process-text">
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
+        <FadeIn key={item.title} additionalClass="process-item">
+          <div className="process-text">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
           </div>
-        </Fade>
+        </FadeIn>
       ))}
     </div>
   )

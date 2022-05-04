@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
 import VideoWithCover from "../components/videoWithCover"
 import WorkPreview from "../components/workPreview"
+import FadeIn from "../components/fadeIn"
 import Seo from "../components/seo"
 
 const CaseStudyPage = ({ data }) => {
@@ -41,36 +42,37 @@ const CaseStudyPage = ({ data }) => {
               {mediaSection.map((item, index) => {
                 if (item.image) {
                   return (
-                    <GatsbyImage
-                      key={index}
-                      image={item.image.gatsbyImageData}
-                      alt={item.image.description || item.image.title}
-                      className="single-column-image"
-                    />
+                    <FadeIn key={index}>
+                      <GatsbyImage
+                        image={item.image.gatsbyImageData}
+                        alt={item.image.description || item.image.title}
+                        className="single-column-image"
+                      />
+                    </FadeIn>
                   )
                 } else if (item.images) {
                   return (
                     <div className="two-column-image-container">
                       {item.images.map((image, index) => (
-                        <GatsbyImage
-                          key={index}
-                          image={image.gatsbyImageData}
-                          alt={image.description || image.title}
-                          className="two-column-image"
-                        />
+                        <FadeIn key={index} additionalClass="two-column-image">
+                          <GatsbyImage
+                            image={image.gatsbyImageData}
+                            alt={image.description || image.title}
+                          />
+                        </FadeIn>
                       ))}
                     </div>
                   )
                 } else {
                   return (
-                    <div className="media-video-module">
+                    <FadeIn additionalClass="media-video-module">
                       <VideoWithCover
                         coverImage={item.coverPhoto}
                         videoId={item.videoId}
                         vertical={item.vertical}
                         title={item.title}
                       />
-                    </div>
+                    </FadeIn>
                   )
                 }
               })}

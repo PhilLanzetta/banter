@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link"
 import { debounce } from "../utilities/helpers"
 import logo from "../assets/images/logo2.svg"
 
@@ -27,9 +27,9 @@ const Header = ({ toggleSidebar, isOpen }) => {
     <header>
       <nav>
         <div className={`navbar ${visible ? "nav-show" : "nav-hide"}`}>
-          <Link to="/">
+          <AniLink fade to="/">
             <img className="nav-logo" src={logo} alt="banter logo" />
-          </Link>
+          </AniLink>
           <button
             id="nav-icon"
             className={`${isOpen ? "open" : ""}`}
@@ -42,49 +42,68 @@ const Header = ({ toggleSidebar, isOpen }) => {
           </button>
           <ul className="desktop-page-links">
             <li>
-              <Link to="/projects" className="hover-underline-animation-full black">
+              <AniLink
+                fade
+                to="/projects"
+                className="hover-underline-animation-full black"
+              >
                 Case Studies
-              </Link>
+              </AniLink>
             </li>
             <li>
-              <Link className="hover-underline-animation-full black" to="/work">
+              <AniLink
+                fade
+                className="hover-underline-animation-full black"
+                to="/work"
+              >
                 Work
-              </Link>
+              </AniLink>
             </li>
             <li>
-              <Link className="hover-underline-animation-full black" to="/about">
+              <AniLink
+                swipe
+                direction="down"
+                top="entry"
+                className="hover-underline-animation-full black"
+                to="/about"
+              >
                 About
-              </Link>
+              </AniLink>
             </li>
           </ul>
         </div>
         <ul className={`mobile-page-links ${isOpen ? "show" : "hide"}`}>
           <li>
-            <Link
+            <AniLink
+              fade
               className="hover-underline-animation-full black"
               to="/projects"
               onClick={toggleSidebar}
             >
               Case Studies
-            </Link>
+            </AniLink>
           </li>
           <li>
-            <Link
+            <AniLink
+              fade
               className="hover-underline-animation-full black"
               to="/work"
               onClick={toggleSidebar}
             >
               Work
-            </Link>
+            </AniLink>
           </li>
           <li>
-            <Link
+            <AniLink
+              swipe
+              direction="down"
+              top="entry"
               className="hover-underline-animation-full black"
               to="/about"
               onClick={toggleSidebar}
             >
               About
-            </Link>
+            </AniLink>
           </li>
         </ul>
       </nav>

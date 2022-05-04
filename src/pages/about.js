@@ -1,6 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
-import Fade from "react-reveal/Fade"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -10,17 +9,18 @@ import Team from "../components/team"
 import MarqueeSlider from "../components/marquee"
 import Process from "../components/process"
 import MailBanner from "../components/mailBanner"
+import FadeIn from "../components/fadeIn"
 
 const About = ({ data }) => (
   <Layout>
     <Seo title="About" />
     <AboutIntro />
     <AboutCarousel />
-    <Fade bottom>
+    <FadeIn>
       <p className="about-details">
         {data.contentfulAbout.orgDesc.internal.content}
       </p>
-    </Fade>
+    </FadeIn>
     <Team />
     <MarqueeSlider />
     <Process />

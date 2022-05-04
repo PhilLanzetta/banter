@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import Fade from "react-reveal/Fade"
+import FadeIn from "./fadeIn"
 
 const Team = () => {
   const data = useStaticQuery(graphql`
@@ -29,23 +29,21 @@ const Team = () => {
   return (
     <div className="team">
       <h2>Team</h2>
-        <div className="team-members-container">
-          {data.team.edges.map(member => (
-           <Fade bottom>
-            <div className="team-member" key={member.node.id}>
-              <GatsbyImage
-                image={member.node.profilePic.gatsbyImageData}
-                alt={member.node.name}
-              />
-              <div className="team-member-heading">
-                <h3>{member.node.name}</h3>
-                <h3>{member.node.position}</h3>
-              </div>
-              <p>{member.node.bio.internal.content}</p>
+      <div className="team-members-container">
+        {data.team.edges.map(member => (
+          <FadeIn additionalClass="team-member" key={member.node.id}>
+            <GatsbyImage
+              image={member.node.profilePic.gatsbyImageData}
+              alt={member.node.name}
+            />
+            <div className="team-member-heading">
+              <h3>{member.node.name}</h3>
+              <h3>{member.node.position}</h3>
             </div>
-            </Fade>
-          ))}
-        </div>
+            <p>{member.node.bio.internal.content}</p>
+          </FadeIn>
+        ))}
+      </div>
     </div>
   )
 }
