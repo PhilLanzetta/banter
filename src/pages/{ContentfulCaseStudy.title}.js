@@ -117,9 +117,10 @@ const CaseStudyPage = ({ data }) => {
       <div className="related">
         <h3>Related Projects</h3>
         <div className="post-container">
-          {related.map(post => (
-            <WorkPreview data={post} key={post.id} featured />
-          ))}
+          {related &&
+            related.map(post => (
+              <WorkPreview data={post} key={post.id} featured />
+            ))}
         </div>
       </div>
     </Layout>
