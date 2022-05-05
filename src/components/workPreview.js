@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import TransitionLink from "gatsby-plugin-transition-link"
 import ReactPlayer from "react-player"
 import slugify from "slugify"
+import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import FadeIn from "./fadeIn"
 
@@ -38,14 +38,7 @@ const WorkPreview = ({ data, featured, home }) => {
     >
       <FadeIn>
         <div className="work-preview-media">
-          <TransitionLink
-            exit={{
-              length: 1,
-            }}
-            entry={{ length: 1 }}
-            to={`/${slug}`}
-            className="work-video-link"
-          ></TransitionLink>
+          <Link to={`/${slug}`} className="work-video-link"></Link>
           <GatsbyImage
             image={loadingImage.gatsbyImageData}
             className={`work-cover-img ${ready ? "work-cover-hide" : ""}`}
@@ -70,28 +63,20 @@ const WorkPreview = ({ data, featured, home }) => {
           />
         </div>
         <div className="work-video-info">
-          <TransitionLink
-            exit={{
-              length: 1,
-            }}
-            entry={{ length: 1 }}
+          <Link
             to={`/${slug}`}
             className={`title-link ${featured ? "featured-title-link" : ""}`}
           >
             {title}
-          </TransitionLink>
-          <TransitionLink
-            exit={{
-              length: 1,
-            }}
-            entry={{ length: 1 }}
+          </Link>
+          <Link
             to={`/${slug}`}
             className={`work-view-link hover-underline-animation-full black ${
               featured ? "featured-view-link" : ""
             }`}
           >
             VIEW PROJECT →
-          </TransitionLink>
+          </Link>
         </div>
       </FadeIn>
     </div>

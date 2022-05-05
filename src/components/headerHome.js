@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import TransitionLink from "gatsby-plugin-transition-link"
+import { Link } from "gatsby"
 import { debounce } from "../utilities/helpers"
 import logo from "../assets/images/logo2.svg"
 
@@ -22,7 +22,7 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
       setVisible(false)
     }
     setPrevScrollPos(currentScrollPos)
-  }, 0)
+  }, 10)
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll)
@@ -34,9 +34,9 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
     <header>
       <nav>
         <div className={`navbar ${visible ? "nav-show" : "nav-hide"}`}>
-          <TransitionLink to="/" onClick={isOpen ? toggleSidebar : () => {}}>
+          <Link to="/" onClick={isOpen ? toggleSidebar : () => {}}>
             <img className="nav-logo" src={logo} alt="banter logo" />
-          </TransitionLink>
+          </Link>
           <button
             id="nav-icon"
             className={`${isOpen ? "open" : ""}`}
@@ -49,58 +49,55 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
           </button>
           <ul className="desktop-page-links">
             <li>
-              <TransitionLink
+              <Link
                 to="/projects"
                 className="hover-underline-animation-full black"
               >
                 Case Studies
-              </TransitionLink>
+              </Link>
             </li>
             <li>
-              <TransitionLink
-                className="hover-underline-animation-full black"
-                to="/work"
-              >
+              <Link className="hover-underline-animation-full black" to="/work">
                 Work
-              </TransitionLink>
+              </Link>
             </li>
             <li>
-              <TransitionLink
+              <Link
                 className="hover-underline-animation-full black"
                 to="/about"
               >
                 About
-              </TransitionLink>
+              </Link>
             </li>
           </ul>
         </div>
         <ul className={`mobile-page-links ${isOpen ? "show" : "hide"}`}>
           <li>
-            <TransitionLink
+            <Link
               className="hover-underline-animation-full black"
               to="/projects"
               onClick={toggleSidebar}
             >
               Case Studies
-            </TransitionLink>
+            </Link>
           </li>
           <li>
-            <TransitionLink
+            <Link
               className="hover-underline-animation-full black"
               to="/work"
               onClick={toggleSidebar}
             >
               Work
-            </TransitionLink>
+            </Link>
           </li>
           <li>
-            <TransitionLink
+            <Link
               className="hover-underline-animation-full black"
               to="/about"
               onClick={toggleSidebar}
             >
               About
-            </TransitionLink>
+            </Link>
           </li>
         </ul>
       </nav>

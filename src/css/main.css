@@ -420,10 +420,6 @@ Splash
   background: #fff;
 }
 
-.home-page {
-  opacity: 0;
-}
-
 .splash-overlay {
   position: fixed;
   background-color: #000;
@@ -790,7 +786,6 @@ Home
 
 .works-list,
 .featured-works-list {
-  opacity: 0;
   margin-top: 60px;
   padding: 4rem 2rem;
   display: flex;
@@ -946,7 +941,6 @@ Home
 }
 
 .case-page {
-  opacity: 0;
   padding-top: 60px;
   font-family: "founders", sans-serif;
 }
