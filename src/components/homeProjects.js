@@ -26,7 +26,7 @@ const HomeProjects = () => {
   return (
     <div className="home-projects">
       <h2>Recent Projects</h2>
-      <div className="works-list home">
+      <div className="works-list-home">
         {works.map(work => (
           <WorkPreview data={work} key={work.id} home />
         ))}

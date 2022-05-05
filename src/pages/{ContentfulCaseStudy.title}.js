@@ -72,7 +72,7 @@ const CaseStudyPage = ({ data, transitionStatus }) => {
                   )
                 } else if (item.images) {
                   return (
-                    <div className="two-column-image-container">
+                    <div className="two-column-image-container" key={index}>
                       {item.images.map((image, index) => (
                         <FadeIn key={index} additionalClass="two-column-image">
                           <GatsbyImage
@@ -85,7 +85,7 @@ const CaseStudyPage = ({ data, transitionStatus }) => {
                   )
                 } else {
                   return (
-                    <FadeIn additionalClass="media-video-module">
+                    <FadeIn additionalClass="media-video-module" key={index}>
                       <VideoWithCover
                         coverImage={item.coverPhoto}
                         videoId={item.videoId}
@@ -112,7 +112,7 @@ const CaseStudyPage = ({ data, transitionStatus }) => {
                     {item.nameAndTitle}
                   </a>
                 ) : (
-                  <p>{item.nameAndTitle}</p>
+                  <p key={index}>{item.nameAndTitle}</p>
                 )
               )}
           </div>
@@ -130,7 +130,7 @@ const CaseStudyPage = ({ data, transitionStatus }) => {
                     {item.nameAndTitle}
                   </a>
                 ) : (
-                  <p>{item.nameAndTitle}</p>
+                  <p key={index}>{item.nameAndTitle}</p>
                 )
               )}
           </div>

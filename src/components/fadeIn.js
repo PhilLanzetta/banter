@@ -1,38 +1,35 @@
 import React from "react"
 
-const FadeIn = ({ children, additionalClass }) => {
-  const domRef = React.useRef()
-
+const FadeIn = ({ children, additionalClass, ...props }) => {
   const [isVisible, setVisible] = React.useState(false)
+  const domRef = React.useRef()
+  const moreClasses = additionalClass ? additionalClass : ""
 
   React.useEffect(() => {
-    let observerRefValue
+    let observerRefValue = null
     const observer = new IntersectionObserver(entries => {
-      // In your case there's only one element to observe:
-      if (entries[0].isIntersecting) {
-        // Not possible to set it back to false like this:
-        setVisible(true)
-        // No need to keep observing:
-        observer.unobserve(domRef.current)
-      }
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setVisible(entry.isIntersecting)
+        }
+      })
     })
 
     if (domRef.current) {
       observer.observe(domRef.current)
       observerRefValue = domRef.current
     }
-
     return () => {
-      observer.unobserve(observerRefValue)
+      if (observerRefValue) observer.unobserve(observerRefValue)
     }
   }, [])
 
   return (
     <div
       ref={domRef}
-      className={`fade-container ${additionalClass} ${
+      className={`fade-container ${
         isVisible ? "is-visible" : ""
-      }`}
+      } ${moreClasses}`}
     >
       {children}
     </div>

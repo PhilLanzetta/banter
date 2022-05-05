@@ -798,9 +798,12 @@ Home
   justify-content: space-between;
 }
 
-.home {
+.works-list-home {
   margin-top: 0;
   padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .home-projects,
