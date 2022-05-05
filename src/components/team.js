@@ -31,7 +31,7 @@ const Team = () => {
       <h2>Team</h2>
       <div className="team-members-container">
         {data.team.edges.map(member => (
-          <FadeIn additionalClass="team-member" key={member.node.id}>
+          <FadeIn className="team-member" key={member.node.id}>
             <GatsbyImage
               image={member.node.profilePic.gatsbyImageData}
               alt={member.node.name}

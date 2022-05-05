@@ -1,36 +1,14 @@
 import React from "react"
+import Aos from "aos"
+import "aos/dist/aos.css"
 
-const FadeIn = ({ children, additionalClass, ...props }) => {
-  const [isVisible, setVisible] = React.useState(false)
-  const domRef = React.useRef()
-  const moreClasses = additionalClass ? additionalClass : ""
-
-  React.useLayoutEffect(() => {
-    let observerRefValue = null
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setVisible(entry.isIntersecting)
-        }
-      })
-    })
-
-    if (domRef.current) {
-      observer.observe(domRef.current)
-      observerRefValue = domRef.current
-    }
-    return () => {
-      if (observerRefValue) observer.unobserve(observerRefValue)
-    }
+const FadeIn = ({ children, className }) => {
+  React.useEffect(() => {
+    Aos.init({ duration: 1000 })
   }, [])
 
   return (
-    <div
-      ref={domRef}
-      className={`fade-container ${
-        isVisible ? "is-visible" : ""
-      } ${moreClasses}`}
-    >
+    <div data-aos="fade-up" data-aos-once={true} className={className}>
       {children}
     </div>
   )

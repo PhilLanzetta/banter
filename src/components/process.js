@@ -18,7 +18,7 @@ const Process = () => {
   return (
     <div className="process">
       {processes.map(item => (
-        <FadeIn key={item.title} additionalClass="process-item">
+        <FadeIn key={item.title} className="process-item">
           <div className="process-text">
             <h3>{item.title}</h3>
             <p>{item.text}</p>

@@ -74,7 +74,7 @@ const CaseStudyPage = ({ data, transitionStatus }) => {
                   return (
                     <div className="two-column-image-container" key={index}>
                       {item.images.map((image, index) => (
-                        <FadeIn key={index} additionalClass="two-column-image">
+                        <FadeIn key={index} className="two-column-image">
                           <GatsbyImage
                             image={image.gatsbyImageData}
                             alt={image.description || image.title}
@@ -85,12 +85,13 @@ const CaseStudyPage = ({ data, transitionStatus }) => {
                   )
                 } else {
                   return (
-                    <FadeIn additionalClass="media-video-module" key={index}>
+                    <FadeIn ClassName="media-video-module" key={index}>
                       <VideoWithCover
                         coverImage={item.coverPhoto}
                         videoId={item.videoId}
                         vertical={item.vertical}
                         title={item.title}
+                        widescreen={item.widescreen}
                       />
                     </FadeIn>
                   )
@@ -200,6 +201,7 @@ export const query = graphql`
           id
           videoId
           vertical
+          widescreen
           title
           coverPhoto {
             gatsbyImageData(placeholder: BLURRED)

@@ -985,11 +985,23 @@ Home
   height: calc(((100vw - 4rem) * 9) / 16);
   width: 100%;
   position: relative;
+  margin: 4rem auto;
+}
+
+.video-media {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .vertical-video {
   height: 437.5px;
   width: 350px;
+}
+
+.widescreen-video {
+  height: calc(((100vw - 4rem) * 9) / 21);
 }
 
 .media-video-module {
@@ -1001,6 +1013,7 @@ Home
 
 .cover-image-for-video {
   position: absolute;
+  width: 100%;
 }
 
 .case-body-text {
@@ -1131,16 +1144,9 @@ Home
     height: 600px;
     width: 480px;
   }
-}
 
-.fade-container {
-  opacity: 0;
-  transform: translate(0, 30px);
-  transition: opacity 700ms, transform 300ms;
-  will-change: opacity, transform;
-}
-
-.is-visible {
-  opacity: 1;
-  transform: none;
+  .widescreen-video {
+    height: 34vw;
+    width: 100%;
+  }
 }
