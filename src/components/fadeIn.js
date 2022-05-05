@@ -5,7 +5,7 @@ const FadeIn = ({ children, additionalClass, ...props }) => {
   const domRef = React.useRef()
   const moreClasses = additionalClass ? additionalClass : ""
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     let observerRefValue = null
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
