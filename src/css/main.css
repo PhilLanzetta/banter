@@ -838,7 +838,9 @@ Home
   min-width: 100%;
   min-height: 100%;
   z-index: 200;
-  filter: blur(2px);
+  opacity: 1;
+  will-change: opacity;
+  transition: opacity 400ms;
 }
 
 .work-video-info {
@@ -854,7 +856,7 @@ Home
 }
 
 .work-cover-hide {
-  animation: fadeAway 1.5s forwards;
+  opacity: 0;
 }
 
 .work-error-msg {
@@ -1134,7 +1136,7 @@ Home
 .fade-container {
   opacity: 0;
   transform: translate(0, 30px);
-  transition: opacity 700ms ease-out, transform 300ms ease-out;
+  transition: opacity 700ms, transform 300ms;
   will-change: opacity, transform;
 }
 

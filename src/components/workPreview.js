@@ -10,7 +10,7 @@ const WorkPreview = ({ data, featured, home }) => {
   const [ready, setReady] = useState(false)
   const [error, setError] = useState(false)
   const { title, videoId, loadingImage } = data
-  const cleanedUpTitle = title.replace(/([A-Z])/g, " $1").trim()
+  const cleanedUpTitle = title.replace(/([A-Z]+)/g, " $1").trim()
   slugify.extend({ "'": "-" })
   const slug = slugify(cleanedUpTitle, { lower: true, remove: /[*+~.()"!:@]/g })
   const handleMouseEnter = () => {
