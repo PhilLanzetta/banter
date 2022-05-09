@@ -50,10 +50,7 @@ const Header = ({ toggleSidebar, isOpen }) => {
               </Link>
             </li>
             <li>
-              <Link
-                className="hover-underline-animation-full black"
-                to="/work"
-              >
+              <Link className="hover-underline-animation-full black" to="/work">
                 Work
               </Link>
             </li>

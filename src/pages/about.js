@@ -11,8 +11,8 @@ import Process from "../components/process"
 import MailBanner from "../components/mailBanner"
 import FadeIn from "../components/fadeIn"
 
-const About = ({ data }) => (
-  <Layout>
+const About = ({ data, location }) => (
+  <Layout location={location}>
     <Seo title="About" />
     <AboutIntro />
     <AboutCarousel />

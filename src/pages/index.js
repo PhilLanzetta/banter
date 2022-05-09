@@ -1,5 +1,5 @@
 import React from "react"
-import LayoutHome from "../components/layoutHome"
+import Layout from "../components/layout"
 import Seo from "../components/seo"
 import SplashContainer from "../components/splashContainer"
 import MarqueeSlider from "../components/marquee"
@@ -8,9 +8,9 @@ import Hero from "../components/hero"
 import HomeProjects from "../components/homeProjects"
 import Press from "../components/press"
 
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   return (
-    <LayoutHome>
+    <Layout location={location}>
       <Seo title="Home" />
       <div className="splash">
         <SplashContainer />
@@ -22,7 +22,7 @@ const IndexPage = () => {
         <Press />
         <MailBanner />
       </div>
-    </LayoutHome>
+    </Layout>
   )
 }
 

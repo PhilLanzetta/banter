@@ -7,7 +7,7 @@ import WorkPreview from "../components/workPreview"
 import FadeIn from "../components/fadeIn"
 import Seo from "../components/seo"
 
-const CaseStudyPage = ({ data }) => {
+const CaseStudyPage = ({ data, location }) => {
   const {
     cast,
     crew,
@@ -21,7 +21,7 @@ const CaseStudyPage = ({ data }) => {
   } = data.contentfulCaseStudy
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo title={title} />
       <div className="case-page">
         <div className="case-heading">

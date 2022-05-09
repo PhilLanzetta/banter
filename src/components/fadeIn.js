@@ -4,7 +4,13 @@ import "aos/dist/aos.css"
 
 const FadeIn = ({ children, className }) => {
   React.useEffect(() => {
-    Aos.init({ duration: 1000 })
+    let mounted = true
+    if (mounted) {
+      Aos.init({ duration: 1000 })
+    } else {
+      return null
+    }
+    return () => (mounted = false)
   }, [])
 
   return (
