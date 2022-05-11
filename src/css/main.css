@@ -1144,3 +1144,12 @@ Home
     width: 100%;
   }
 }
+
+.error-page {
+  margin-top: 60px;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

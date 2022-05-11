@@ -3,7 +3,6 @@ import Header from "./header"
 import HeaderHome from "./headerHome"
 import Footer from "./footer"
 import { motion } from "framer-motion"
-import "../css/main.css"
 
 const Layout = ({ children, location }) => {
   const [isOpen, setIsOpen] = useState(false)

@@ -4,19 +4,16 @@ import WorkPreview from "./workPreview"
 
 const query = graphql`
   {
-    allContentfulCaseStudy(
-      filter: { featured: { eq: true } }
-      sort: { fields: title, order: ASC }
-    ) {
-      nodes {
-        videoId
+    contentfulCaseStudiesPage {
+      caseStudies {
         id
-        title
         loadingImage {
           gatsbyImageData(placeholder: BLURRED)
           title
           description
         }
+        title
+        videoId
       }
     }
   }
@@ -24,7 +21,7 @@ const query = graphql`
 
 const FeaturedWork = () => {
   const data = useStaticQuery(query)
-  const works = data.allContentfulCaseStudy.nodes
+  const works = data.contentfulCaseStudiesPage.caseStudies
   return (
     <div className="featured-works-list">
       {works.map(work => (

@@ -4,11 +4,11 @@ import WorkPreview from "./workPreview"
 
 const query = graphql`
   {
-    allContentfulCaseStudy(sort: { fields: title, order: ASC }) {
-      nodes {
-        videoId
-        title
+    contentfulWorkPage {
+      caseStudies {
         id
+        title
+        videoId
         loadingImage {
           gatsbyImageData(placeholder: BLURRED)
           title
@@ -21,7 +21,7 @@ const query = graphql`
 
 const AllWork = () => {
   const data = useStaticQuery(query)
-  const works = data.allContentfulCaseStudy.nodes
+  const works = data.contentfulWorkPage.caseStudies
   return (
     <div className="works-list">
       {works.map(work => (
