@@ -43,7 +43,7 @@ const Header = ({ toggleSidebar, isOpen }) => {
           <ul className="desktop-page-links">
             <li>
               <Link
-                to="/projects"
+                to="/case-studies"
                 className="hover-underline-animation-full black"
               >
                 Case Studies
@@ -68,7 +68,7 @@ const Header = ({ toggleSidebar, isOpen }) => {
           <li>
             <Link
               className="hover-underline-animation-full black"
-              to="/projects"
+              to="/case-studies"
               onClick={toggleSidebar}
             >
               Case Studies

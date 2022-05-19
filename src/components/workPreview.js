@@ -30,14 +30,16 @@ const WorkPreview = ({ data, featured, home }) => {
   }
 
   return (
-    <div
-      className={containerClass}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      role="presentation"
-    >
+    <div className={containerClass}>
       <FadeIn>
-        <div className="work-preview-media">
+        <div
+          className="work-preview-media"
+          onMouseOver={handleMouseEnter}
+          onMouseOut={handleMouseLeave}
+          onFocus={handleMouseEnter}
+          onBlur={handleMouseLeave}
+          role="presentation"
+        >
           <Link to={`/${slug}`} className="work-video-link"></Link>
           <GatsbyImage
             image={loadingImage.gatsbyImageData}

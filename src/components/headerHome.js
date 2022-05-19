@@ -12,11 +12,7 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
 
     if (currentScrollPos === 0 && !isOpen) {
       setVisible(false)
-    } else if (
-      prevScrollPos > currentScrollPos ||
-      (currentScrollPos > 40 && currentScrollPos < 200) ||
-      isOpen
-    ) {
+    } else if (prevScrollPos > currentScrollPos || isOpen) {
       setVisible(true)
     } else {
       setVisible(false)
@@ -50,7 +46,7 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
           <ul className="desktop-page-links">
             <li>
               <Link
-                to="/projects"
+                to="/case-studies"
                 className="hover-underline-animation-full black"
               >
                 Case Studies
@@ -75,7 +71,7 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
           <li>
             <Link
               className="hover-underline-animation-full black"
-              to="/projects"
+              to="/case-studies"
               onClick={toggleSidebar}
             >
               Case Studies
