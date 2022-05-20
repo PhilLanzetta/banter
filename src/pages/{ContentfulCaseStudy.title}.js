@@ -29,13 +29,13 @@ const CaseStudyPage = ({ data, location }) => {
           <h2>{headlineDescription}</h2>
         </div>
         <div className="case-study-body">
-          <div className="case-header-video">
+          {/* <div className="case-header-video">
             <VideoWithCover
               coverImage={loadingImage}
               videoId={videoId}
               title={title}
             />
-          </div>
+          </div> */}
           {bodyText && <p className="case-body-text">{bodyText.bodyText}</p>}
           {mediaSection && (
             <div className="media-section">
@@ -79,10 +79,10 @@ const CaseStudyPage = ({ data, location }) => {
               })}
             </div>
           )}
-          <div className="case-crew-cast">
-            <h3>Crew</h3>
-            {crew &&
-              crew.map((item, index) =>
+          {cast && (
+            <div className="case-crew-cast">
+              <h3>Cast</h3>
+              {cast.map((item, index) =>
                 item.link ? (
                   <a
                     key={index}
@@ -96,11 +96,12 @@ const CaseStudyPage = ({ data, location }) => {
                   <p key={index}>{item.nameAndTitle}</p>
                 )
               )}
-          </div>
-          <div className="case-crew-cast">
-            <h3>Cast</h3>
-            {cast &&
-              cast.map((item, index) =>
+            </div>
+          )}
+          {crew && (
+            <div className="case-crew-cast">
+              <h3>Crew</h3>
+              {crew.map((item, index) =>
                 item.link ? (
                   <a
                     key={index}
@@ -114,7 +115,8 @@ const CaseStudyPage = ({ data, location }) => {
                   <p key={index}>{item.nameAndTitle}</p>
                 )
               )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="related">

@@ -29,8 +29,8 @@ const Layout = ({ children, location }) => {
         }}
       >
         {children}
+        <Footer />
       </motion.main>
-      <Footer />
     </>
   )
 }

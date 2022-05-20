@@ -67,15 +67,13 @@ const WorkPreview = ({ data, featured, home }) => {
         <div className="work-video-info">
           <Link
             to={`/${slug}`}
-            className={`title-link ${featured ? "featured-title-link" : ""}`}
+            className="title-link"
           >
             {title}
           </Link>
           <Link
             to={`/${slug}`}
-            className={`work-view-link hover-underline-animation-full black ${
-              featured ? "featured-view-link" : ""
-            }`}
+            className="work-view-link hover-underline-animation-full black"
           >
             VIEW PROJECT →
           </Link>

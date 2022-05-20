@@ -883,16 +883,6 @@ Home
   text-align: right;
 }
 
-.featured-view-link {
-  font-size: 18px;
-  width: 140px;
-}
-
-.featured-title-link {
-  width: calc(100% - 160px);
-  font-size: 24px;
-}
-
 .press-item {
   padding: 0 1rem;
   text-align: center;
@@ -995,7 +985,7 @@ Home
 }
 
 .widescreen-video {
-  height: calc(((100vw - 4rem) * 9) / 21);
+  height: calc(((100vw - 4rem) * 9) / 24);
 }
 
 .media-video-module {
@@ -1140,7 +1130,7 @@ Home
   }
 
   .widescreen-video {
-    height: 34vw;
+    height: 30vw;
     width: 100%;
   }
 }

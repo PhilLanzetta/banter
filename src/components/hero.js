@@ -48,7 +48,7 @@ const Hero = () => {
 
   const minVerticalWidth = (height * 16) / 9
 
-  return width < height ? (
+  return width < (height / 1.5) ? (
     <div className="hero-container" style={{ height: height, width: width }}>
       {!videoPlay && (
         <GatsbyImage
