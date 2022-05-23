@@ -6,6 +6,7 @@ import logo from "../assets/images/logo2.svg"
 const HeaderHome = ({ toggleSidebar, isOpen }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.outerWidth < 769)
 
   const handleScroll = debounce(() => {
     const currentScrollPos = window.pageYOffset
@@ -20,11 +21,38 @@ const HeaderHome = ({ toggleSidebar, isOpen }) => {
     setPrevScrollPos(currentScrollPos)
   }, 10)
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
+  const handleMobileScroll = debounce(() => {
+    const currentScrollPos = window.pageYOffset
+    if (currentScrollPos < 80 && !isOpen) {
+      setVisible(false)
+    } else {
+      setVisible(true)
+    }
+    setPrevScrollPos(currentScrollPos)
+  }, 10)
 
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [prevScrollPos, visible, handleScroll])
+  const handleResize = () => {
+    const windowSize = window.outerWidth
+    setIsMobile(windowSize < 769)
+  }
+
+  useEffect(() => {
+    if (!isMobile) {
+      window.addEventListener("scroll", handleScroll)
+
+      return () => window.removeEventListener("scroll", handleScroll)
+    } else {
+      window.addEventListener("scroll", handleMobileScroll)
+
+      return () => window.removeEventListener("scroll", handleMobileScroll)
+    }
+  }, [prevScrollPos, visible, handleScroll, isMobile, handleMobileScroll])
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize)
+
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   return (
     <header>

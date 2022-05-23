@@ -5,7 +5,7 @@ const Splash = () => {
   useEffect(() => {
     document.body.style.overflowY = "hidden"
     return () => {
-      document.body.style.overflowY = "auto"
+      document.body.style.overflowY = "unset"
     }
   }, [])
 
