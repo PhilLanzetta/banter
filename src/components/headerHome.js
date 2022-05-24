@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useLayoutEffect } from "react"
 import { Link } from "gatsby"
 import { debounce } from "../utilities/helpers"
 import logo from "../assets/images/logo2.svg"
