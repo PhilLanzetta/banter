@@ -6,7 +6,11 @@ import logo from "../assets/images/logo2.svg"
 const HeaderHome = ({ toggleSidebar, isOpen }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(false)
-  const [isMobile, setIsMobile] = useState(window.outerWidth < 769)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useLayoutEffect(() => {
+    setIsMobile(window.outerWidth < 769)
+  }, [])
 
   const handleScroll = debounce(() => {
     const currentScrollPos = window.pageYOffset

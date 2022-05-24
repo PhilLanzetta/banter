@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useLayoutEffect } from "react"
 import { Link } from "gatsby"
 import { debounce } from "../utilities/helpers"
 import logo from "../assets/images/logo2.svg"
@@ -6,7 +6,11 @@ import logo from "../assets/images/logo2.svg"
 const Header = ({ toggleSidebar, isOpen }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(true)
-  const [isMobile, setIsMobile] = useState(window.outerWidth < 769)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useLayoutEffect(() => {
+    setIsMobile(window.outerWidth < 769)
+  }, [])
 
   const handleScroll = debounce(() => {
     const currentScrollPos = window.pageYOffset
