@@ -4,9 +4,6 @@ import logo from "../assets/images/footer.svg"
 const Splash = () => {
   useEffect(() => {
     document.body.style.overflowY = "hidden"
-    return () => {
-      document.body.style.overflowY = "unset"
-    }
   }, [])
 
   useEffect(() => {
