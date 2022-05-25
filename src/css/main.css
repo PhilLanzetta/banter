@@ -995,6 +995,12 @@ Home
   width: 100%;
 }
 
+.media-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .case-body-text {
   font-size: calc(1rem + 5vw);
   text-align: center;
@@ -1128,7 +1134,6 @@ Home
   .media-video-vertical {
     display: inline-block;
     width: 50%;
-    margin: 0 auto;
   }
 
   .widescreen-video {

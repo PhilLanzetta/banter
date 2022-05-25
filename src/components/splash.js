@@ -1,14 +1,18 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useLayoutEffect } from "react"
 import logo from "../assets/images/footer.svg"
 
 const Splash = () => {
-  useEffect(() => {
-    document.body.style.overflowY = "hidden"
+  useLayoutEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow
+
+    document.body.style.overflow = "hidden"
+
+    return () => (document.body.style.overflow = originalStyle)
   }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      document.body.style.overflowY = "scroll"
+      document.body.style.overflow = "scroll"
     }, 6000)
     return () => clearTimeout(timer)
   }, [])
