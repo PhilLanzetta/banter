@@ -34,9 +34,9 @@ const WorkPreview = ({ data, featured, home }) => {
       <FadeIn>
         <div
           className="work-preview-media"
-          onMouseOver={handleMouseEnter}
+          onMouseOver={ready ? handleMouseEnter : undefined}
           onMouseOut={handleMouseLeave}
-          onFocus={handleMouseEnter}
+          onFocus={ready ? handleMouseEnter : undefined}
           onBlur={handleMouseLeave}
           role="presentation"
         >
@@ -65,10 +65,7 @@ const WorkPreview = ({ data, featured, home }) => {
           />
         </div>
         <div className="work-video-info">
-          <Link
-            to={`/${slug}`}
-            className="title-link"
-          >
+          <Link to={`/${slug}`} className="title-link">
             {title}
           </Link>
           <Link
