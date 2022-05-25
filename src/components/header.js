@@ -33,7 +33,7 @@ const Header = ({ toggleSidebar, isOpen }) => {
 
       return () => window.removeEventListener("scroll", handleScroll)
     } else {
-      return
+      setVisible(true)
     }
   }, [prevScrollPos, visible, handleScroll, isMobile])
 

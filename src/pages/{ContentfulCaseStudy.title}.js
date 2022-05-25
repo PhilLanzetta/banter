@@ -12,10 +12,7 @@ const CaseStudyPage = ({ data, location }) => {
     cast,
     crew,
     title,
-    videoId,
-    loadingImage,
     headlineDescription: { headlineDescription },
-    bodyText,
     mediaSection,
     related,
   } = data.contentfulCaseStudy
@@ -29,14 +26,6 @@ const CaseStudyPage = ({ data, location }) => {
           <h2>{headlineDescription}</h2>
         </div>
         <div className="case-study-body">
-          {/* <div className="case-header-video">
-            <VideoWithCover
-              coverImage={loadingImage}
-              videoId={videoId}
-              title={title}
-            />
-          </div> */}
-          {bodyText && <p className="case-body-text">{bodyText.bodyText}</p>}
           {mediaSection && (
             <div className="media-section">
               {mediaSection.map((item, index) => {
@@ -63,9 +52,20 @@ const CaseStudyPage = ({ data, location }) => {
                       ))}
                     </div>
                   )
+                } else if (item.pullQuote) {
+                  return (
+                    <FadeIn key={index}>
+                      <p className="case-body-text">{item.pullQuote}</p>
+                    </FadeIn>
+                  )
                 } else {
                   return (
-                    <FadeIn ClassName="media-video-module" key={index}>
+                    <FadeIn
+                      className={`${
+                        item.vertical ? "media-video-vertical" : ""
+                      }`}
+                      key={index}
+                    >
                       <VideoWithCover
                         coverImage={item.coverPhoto}
                         videoId={item.videoId}
@@ -137,18 +137,8 @@ export const query = graphql`
     contentfulCaseStudy(title: { eq: $title }) {
       id
       title
-      videoId
-      tags
-      loadingImage {
-        gatsbyImageData(placeholder: BLURRED)
-        title
-        description
-      }
       headlineDescription {
         headlineDescription
-      }
-      bodyText {
-        bodyText
       }
       cast {
         ... on ContentfulCastCrewMember {
@@ -190,6 +180,9 @@ export const query = graphql`
             title
             description
           }
+        }
+        ... on ContentfulPullQuote {
+          pullQuote
         }
       }
       related {
