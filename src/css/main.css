@@ -990,13 +990,6 @@ Home
   height: calc(((100vw - 4rem) * 9) / 24);
 }
 
-.media-video-module {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-  margin-bottom: 4rem;
-}
-
 .cover-image-for-video {
   position: absolute;
   width: 100%;
@@ -1135,6 +1128,7 @@ Home
   .media-video-vertical {
     display: inline-block;
     width: 50%;
+    margin: 0 auto;
   }
 
   .widescreen-video {
