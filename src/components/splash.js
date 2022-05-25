@@ -3,16 +3,24 @@ import logo from "../assets/images/footer.svg"
 
 const Splash = () => {
   useLayoutEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow
+    const originalScrollStyle = window.getComputedStyle(document.body).overflow
+    const originalPositionStyle = window.getComputedStyle(
+      document.body
+    ).position
 
     document.body.style.overflow = "hidden"
+    document.body.style.position = "fixed"
 
-    return () => (document.body.style.overflow = originalStyle)
+    return () => {
+      document.body.style.overflow = originalScrollStyle
+      document.body.style.position = originalPositionStyle
+    }
   }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
       document.body.style.overflow = "scroll"
+      document.body.style.position = "static"
     }, 6000)
     return () => clearTimeout(timer)
   }, [])
