@@ -34,8 +34,8 @@ const WorkPreview = ({ data, featured, home }) => {
       <FadeIn>
         <div
           className="work-preview-media"
-          onMouseOver={ready ? handleMouseEnter : undefined}
-          onMouseOut={handleMouseLeave}
+          onMouseEnter={ready ? handleMouseEnter : undefined}
+          onMouseLeave={handleMouseLeave}
           onFocus={ready ? handleMouseEnter : undefined}
           onBlur={handleMouseLeave}
           role="presentation"
