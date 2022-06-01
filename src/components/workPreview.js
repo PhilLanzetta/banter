@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import ReactPlayer from "react-player"
+import React, { useState, useEffect } from "react"
+import Vimeo from "@u-wave/react-vimeo"
 import slugify from "slugify"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -7,18 +7,33 @@ import FadeIn from "./fadeIn"
 
 const WorkPreview = ({ data, featured, home }) => {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [hovered, setHovered] = useState(false)
   const [ready, setReady] = useState(false)
   const [error, setError] = useState(false)
   const { title, videoId, loadingImage } = data
   const cleanedUpTitle = title.replace(/([A-Z]+)/g, " $1").trim()
   slugify.extend({ "'": "-" })
   const slug = slugify(cleanedUpTitle, { lower: true, remove: /[*+~.()"!:@]/g })
+
   const handleMouseEnter = () => {
-    setIsPlaying(true)
+    setHovered(true)
   }
   const handleMouseLeave = () => {
+    setHovered(false)
     setIsPlaying(false)
   }
+
+  const onTimeout = () => {
+    setIsPlaying(true)
+  }
+
+  useEffect(() => {
+    const timer = hovered && setTimeout(onTimeout, 200)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [hovered])
+
   let containerClass
 
   if (featured) {
@@ -51,16 +66,17 @@ const WorkPreview = ({ data, featured, home }) => {
               There was an error in loading this video
             </div>
           )}
-          <ReactPlayer
-            url={`https://player.vimeo.com/video/${videoId}`}
-            playing={isPlaying}
+          <Vimeo
+            video={videoId}
+            paused={!isPlaying}
+            showByline={false}
+            controls={false}
+            responsive
             muted
             playsinline
             loop
             onReady={() => setReady(true)}
             onError={() => setError(true)}
-            width={"100%"}
-            height={"100%"}
             className="work-preview-video"
           />
         </div>
