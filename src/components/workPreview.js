@@ -77,6 +77,7 @@ const WorkPreview = ({ data, featured, home }) => {
             loop
             onReady={() => setReady(true)}
             onError={() => setError(true)}
+            onPlay={() => setError(false)}
             className="work-preview-video"
           />
         </div>
