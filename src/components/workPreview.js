@@ -7,6 +7,7 @@ import FadeIn from "./fadeIn"
 
 const WorkPreview = ({ data, featured, home }) => {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [isPaused, setIsPaused] = useState(true)
   const [hovered, setHovered] = useState(false)
   const [ready, setReady] = useState(false)
   const [error, setError] = useState(false)
@@ -20,15 +21,17 @@ const WorkPreview = ({ data, featured, home }) => {
   }
   const handleMouseLeave = () => {
     setHovered(false)
-    setIsPlaying(false)
+    if (isPlaying) {
+      setIsPaused(true)
+    }
   }
 
   const onTimeout = () => {
-    setIsPlaying(true)
+    setIsPaused(false)
   }
 
   useEffect(() => {
-    const timer = hovered && setTimeout(onTimeout, 200)
+    const timer = hovered && setTimeout(onTimeout, 1000)
     return () => {
       clearTimeout(timer)
     }
@@ -68,7 +71,7 @@ const WorkPreview = ({ data, featured, home }) => {
           )}
           <Vimeo
             video={videoId}
-            paused={!isPlaying}
+            paused={isPaused}
             showByline={false}
             controls={false}
             responsive
@@ -77,7 +80,7 @@ const WorkPreview = ({ data, featured, home }) => {
             loop
             onReady={() => setReady(true)}
             onError={() => setError(true)}
-            onPlay={() => setError(false)}
+            onPlay={() => setIsPlaying(true)}
             className="work-preview-video"
           />
         </div>

@@ -8,6 +8,7 @@ const VideoWithCover = ({
   vertical,
   title,
   widescreen,
+  square,
 }) => {
   const [playerReady, setPlayerReady] = useState(false)
 
@@ -15,7 +16,7 @@ const VideoWithCover = ({
     <figure
       className={`video-container ${vertical ? "vertical-video" : ""} ${
         widescreen ? "widescreen-video" : ""
-      }`}
+      } ${square ? "square-video" : ""}`}
     >
       <div className="video-media">
         {!playerReady && (

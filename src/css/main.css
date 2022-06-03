@@ -988,8 +988,14 @@ Home
   width: 80vw;
 }
 
+.square-video {
+  height: 80vw;
+  width: 80vw;
+}
+
 .widescreen-video {
-  height: calc(((100vw - 4rem) * 9) / 24);
+  padding-top: 18%;
+  margin-top: calc(4rem - 18%);
 }
 
 .cover-image-for-video {
@@ -1134,14 +1140,14 @@ Home
     width: 35vw;
   }
 
+  .square-video {
+    height: 35vw;
+    width: 35vw;
+  }
+
   .media-video-vertical {
     display: inline-block;
     width: 50%;
-  }
-
-  .widescreen-video {
-    height: 30vw;
-    width: 100%;
   }
 }
 

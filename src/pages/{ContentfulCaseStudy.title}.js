@@ -59,10 +59,13 @@ const CaseStudyPage = ({ data, location }) => {
                     </FadeIn>
                   )
                 } else {
+                  console.log(item)
                   return (
                     <FadeIn
                       className={`${
-                        item.vertical ? "media-video-vertical" : ""
+                        item.vertical || item.square
+                          ? "media-video-vertical"
+                          : ""
                       }`}
                       key={index}
                     >
@@ -70,6 +73,7 @@ const CaseStudyPage = ({ data, location }) => {
                         coverImage={item.coverPhoto}
                         videoId={item.videoId}
                         vertical={item.vertical}
+                        square={item.square}
                         title={item.title}
                         widescreen={item.widescreen}
                       />
@@ -173,6 +177,7 @@ export const query = graphql`
           id
           videoId
           vertical
+          square
           widescreen
           title
           coverPhoto {
