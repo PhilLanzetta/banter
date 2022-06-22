@@ -11,9 +11,13 @@ const MarqueeSlider = () => {
     }
   `)
 
-  const delay =
-    typeof sessionStorage.getItem("welcomeShown") !== "undefined" &&
-    sessionStorage.getItem("welcomeShown") !== "true"
+  let delay = false
+
+  if (typeof window !== "undefined" && window.sessionStorage) {
+    delay =
+      typeof sessionStorage.getItem("welcomeShown") !== "undefined" &&
+      sessionStorage.getItem("welcomeShown") !== "true"
+  }
 
   return (
     <Marquee
