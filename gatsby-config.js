@@ -13,6 +13,17 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-mdx`,
     {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-R5M4Q7GEM1",
+        ],
+        pluginConfig: {
+          head: true,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-image`,
       options: {
         defaults: {

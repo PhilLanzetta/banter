@@ -19,10 +19,12 @@ const WorkPreview = ({ data, featured, home }) => {
   const handleMouseEnter = () => {
     setHovered(true)
   }
+
   const handleMouseLeave = () => {
     setHovered(false)
     if (isPlaying) {
       setIsPaused(true)
+      setIsPlaying(false)
     }
   }
 
@@ -31,7 +33,7 @@ const WorkPreview = ({ data, featured, home }) => {
   }
 
   useEffect(() => {
-    const timer = hovered && setTimeout(onTimeout, 1000)
+    const timer = hovered && setTimeout(onTimeout, 300)
     return () => {
       clearTimeout(timer)
     }
@@ -78,6 +80,7 @@ const WorkPreview = ({ data, featured, home }) => {
             muted
             playsinline
             loop
+            autopause={isPlaying}
             onReady={() => setReady(true)}
             onError={() => setError(true)}
             onPlay={() => setIsPlaying(true)}
