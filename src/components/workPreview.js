@@ -33,7 +33,7 @@ const WorkPreview = ({ data, featured, home }) => {
   }
 
   useEffect(() => {
-    const timer = hovered && setTimeout(onTimeout, 300)
+    const timer = hovered && setTimeout(onTimeout, 500)
     return () => {
       clearTimeout(timer)
     }
@@ -80,7 +80,7 @@ const WorkPreview = ({ data, featured, home }) => {
             muted
             playsinline
             loop
-            autopause={isPlaying}
+            autopause={false}
             onReady={() => setReady(true)}
             onError={() => setError(true)}
             onPlay={() => setIsPlaying(true)}
