@@ -58,8 +58,19 @@ const CaseStudyPage = ({ data, location }) => {
                       <p className="case-body-text">{item.pullQuote}</p>
                     </FadeIn>
                   )
+                } else if (item.text) {
+                  return (
+                    <p
+                      style={{
+                        width: "100%",
+                        fontSize: `calc(0.5rem + ${item.size}vw)`,
+                        textAlign: item.orientation,
+                      }}
+                    >
+                      {item.text.text}
+                    </p>
+                  )
                 } else {
-                  console.log(item)
                   return (
                     <FadeIn
                       className={`${
@@ -188,6 +199,13 @@ export const query = graphql`
         }
         ... on ContentfulPullQuote {
           pullQuote
+        }
+        ... on ContentfulTextModule {
+          text {
+            text
+          }
+          size
+          orientation
         }
       }
       related {

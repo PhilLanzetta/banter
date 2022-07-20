@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Vimeo from "@u-wave/react-vimeo"
+import ReactPlayer from "react-player"
 import slugify from "slugify"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -29,7 +29,7 @@ const WorkPreview = ({ data, featured, home }) => {
   }
 
   const onTimeout = () => {
-    setIsPaused(false)
+    setIsPlaying(true)
   }
 
   useEffect(() => {
@@ -71,21 +71,18 @@ const WorkPreview = ({ data, featured, home }) => {
               There was an error in loading this video
             </div>
           )}
-          <Vimeo
-            video={videoId}
-            paused={isPaused}
-            showByline={false}
-            controls={false}
-            responsive
-            muted
-            playsinline
-            loop
-            autopause={false}
-            onReady={() => setReady(true)}
-            onError={() => setError(true)}
-            onPlay={() => setIsPlaying(true)}
-            className="work-preview-video"
-          />
+          <div className="work-preview-video">
+            <ReactPlayer
+              url={`https://player.vimeo.com/video/${videoId}`}
+              playing={isPlaying}
+              muted
+              loop
+              playsinline
+              onReady={() => setReady(true)}
+              height="100%"
+              width="100%"
+            />
+          </div>
         </div>
         <div className="work-video-info">
           <Link to={`/${slug}`} className="title-link">
