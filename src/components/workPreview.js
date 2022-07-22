@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import ReactPlayer from "react-player"
+import Vimeo from "@u-wave/react-vimeo"
 import slugify from "slugify"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -10,7 +10,6 @@ const WorkPreview = ({ data, featured, home }) => {
   const [isPaused, setIsPaused] = useState(true)
   const [hovered, setHovered] = useState(false)
   const [ready, setReady] = useState(false)
-  const [error, setError] = useState(false)
   const { title, videoId, loadingImage } = data
   const cleanedUpTitle = title.replace(/([A-Z]+)/g, " $1").trim()
   slugify.extend({ "'": "-" })
@@ -29,7 +28,7 @@ const WorkPreview = ({ data, featured, home }) => {
   }
 
   const onTimeout = () => {
-    setIsPlaying(true)
+    setIsPaused(false)
   }
 
   useEffect(() => {
@@ -66,23 +65,19 @@ const WorkPreview = ({ data, featured, home }) => {
             className={`work-cover-img ${ready ? "work-cover-hide" : ""}`}
             alt={loadingImage.description || loadingImage.title}
           />
-          {error && (
-            <div className="work-error-msg">
-              There was an error in loading this video
-            </div>
-          )}
-          <div className="work-preview-video">
-            <ReactPlayer
-              url={`https://player.vimeo.com/video/${videoId}`}
-              playing={isPlaying}
-              muted
-              loop
-              playsinline
-              onReady={() => setReady(true)}
-              height="100%"
-              width="100%"
-            />
-          </div>
+          <Vimeo
+            video={videoId}
+            paused={isPaused}
+            showByline={false}
+            controls={false}
+            responsive
+            muted
+            playsinline
+            loop
+            onReady={() => setReady(true)}
+            onPlay={() => setIsPlaying(true)}
+            className="work-preview-video"
+          />
         </div>
         <div className="work-video-info">
           <Link to={`/${slug}`} className="title-link">
