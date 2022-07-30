@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Vimeo from "@u-wave/react-vimeo"
 import slugify from "slugify"
 import { Link } from "gatsby"
@@ -7,6 +7,7 @@ import FadeIn from "./fadeIn"
 
 const WorkPreview = ({ data, featured, home }) => {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [hasPlayed, setHasPlayed] = useState(false)
   const [isPaused, setIsPaused] = useState(true)
   const [hovered, setHovered] = useState(false)
   const [ready, setReady] = useState(false)
@@ -17,26 +18,19 @@ const WorkPreview = ({ data, featured, home }) => {
 
   const handleMouseEnter = () => {
     setHovered(true)
+    if (ready) {
+      setIsPaused(false)
+    }
   }
 
   const handleMouseLeave = () => {
     setHovered(false)
     if (isPlaying) {
       setIsPaused(true)
-      setIsPlaying(false)
+    } else {
+      setTimeout(() => setIsPaused(true), 1500)
     }
   }
-
-  const onTimeout = () => {
-    setIsPaused(false)
-  }
-
-  useEffect(() => {
-    const timer = hovered && setTimeout(onTimeout, 500)
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [hovered])
 
   let containerClass
 
@@ -53,13 +47,23 @@ const WorkPreview = ({ data, featured, home }) => {
       <FadeIn>
         <div
           className="work-preview-media"
-          onMouseEnter={ready ? handleMouseEnter : undefined}
+          onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          onFocus={ready ? handleMouseEnter : undefined}
+          onFocus={handleMouseEnter}
           onBlur={handleMouseLeave}
           role="presentation"
         >
           <Link to={`/${slug}`} className="work-video-link"></Link>
+          {hovered && !hasPlayed && (
+            <div className="loader">
+              <div className="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          )}
           <GatsbyImage
             image={loadingImage.gatsbyImageData}
             className={`work-cover-img ${ready ? "work-cover-hide" : ""}`}
@@ -67,15 +71,19 @@ const WorkPreview = ({ data, featured, home }) => {
           />
           <Vimeo
             video={videoId}
-            paused={isPaused}
+            paused={!hovered && isPaused}
             showByline={false}
             controls={false}
             responsive
             muted
+            autopause={hasPlayed}
             playsinline
             loop
-            onReady={() => setReady(true)}
-            onPlay={() => setIsPlaying(true)}
+            onPlay={() => {
+              setIsPlaying(true)
+              setHasPlayed(true)
+            }}
+            onLoaded={() => setTimeout(setReady(true), 2000)}
             className="work-preview-video"
           />
         </div>
